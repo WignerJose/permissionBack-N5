@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using PermissionsN5.Domain.Entity;
 using PermissionsN5.Infrastructure.Config;
@@ -12,17 +13,10 @@ namespace PermissionsN5.Infrastructure.Persistence
 {
     public class PermissionDbContext : DbContext
     {
-        private readonly string _connectionString;
+        public PermissionDbContext(DbContextOptions<PermissionDbContext> options)
+        : base(options){}
 
-        public PermissionDbContext(IOptions<DataBaseConfig> dataBaseConfig)
-        {
-            _connectionString = dataBaseConfig.Value.DbConnectionString;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(_connectionString);
-        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){}
 
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<PermissionType> PermissionTypes { get; set; }

@@ -9,7 +9,7 @@ namespace PermissionsN5.Application.UseCases.GetAllPermissions
 {
     public class GetAllPermissionQuery : IRequest<IList<GetAllPermissionResponse>>
     {
-        internal GetAllPermissionQuery() { }
+        public GetAllPermissionQuery() { }
     }
 
     public class GetAllPermissionResponse
