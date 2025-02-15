@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PermissionsN5.Application.UseCases.GetAllPermissions;
+using PermissionsN5.Application.UseCases.GetPermissionById;
 
 namespace PermissionsN5.WebApi.Controllers
 {
@@ -19,6 +20,14 @@ namespace PermissionsN5.WebApi.Controllers
         public async Task<ActionResult> GetPermissions()
         {
             var request = new GetAllPermissionQuery();
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+
+        [HttpGet("permission/{id}", Name = "getPermission")]
+        public async Task<ActionResult> GetPermission([FromRoute] int id)
+        {
+            var request = new GetPermissionQuery(id);
             var response = await _mediator.Send(request);
             return Ok(response);
         }

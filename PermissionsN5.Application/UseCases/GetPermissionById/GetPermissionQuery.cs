@@ -11,7 +11,7 @@ namespace PermissionsN5.Application.UseCases.GetPermissionById
     {
         public int Id { get; set; }
 
-        internal GetPermissionQuery(int Id) 
+        public GetPermissionQuery(int Id) 
         {
             this.Id = Id;
         }
