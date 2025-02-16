@@ -9,18 +9,23 @@ namespace PermissionsN5.Application.UseCases.UpdatePermission
 {
     public class UpdatePermissionCommand : IRequest<UpdatePermissionResponse>
     {
-        public UpdatePermissionRequest Request { get; set; }
-        public UpdatePermissionCommand(UpdatePermissionRequest updatePermissionRequest) 
+        public int Id { get; set; }
+        public String EmployeeName { get; set; } = String.Empty;
+        public String EmployeeLastName { get; set; } = String.Empty;
+        public int PermissionTypeId { get; set; }
+        public UpdatePermissionCommand(int id, String employeeName, String employeeLastName, int permissionTypeId ) 
         {
-            Request = updatePermissionRequest;
+            Id = id;
+            EmployeeName = employeeName;
+            EmployeeLastName = employeeLastName;
+            PermissionTypeId = permissionTypeId;
         }
     }
 
     public class UpdatePermissionRequest
     {
-        public int Id { get; set; }
-        public String EmployeeName { get; set; } = String.Empty;
-        public String EmployeeLastName { get; set; } = String.Empty;
+        public string EmployeeName { get; set; } = String.Empty;
+        public string EmployeeLastName { get; set; } = String.Empty;
         public int PermissionTypeId { get; set; }
     }
 

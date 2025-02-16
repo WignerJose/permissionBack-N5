@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PermissionsN5.Application.UseCases.GetAllPermissions;
 using PermissionsN5.Application.UseCases.GetPermissionById;
+using PermissionsN5.Application.UseCases.UpdatePermission;
 
 namespace PermissionsN5.WebApi.Controllers
 {
@@ -14,7 +15,7 @@ namespace PermissionsN5.WebApi.Controllers
         public PermissionController(IMediator mediator)
         {
             _mediator = mediator;
-        }   
+        }
 
         [HttpGet("permissions", Name = "getAllPermissions")]
         public async Task<ActionResult> GetPermissions()
@@ -24,11 +25,25 @@ namespace PermissionsN5.WebApi.Controllers
             return Ok(response);
         }
 
-        [HttpGet("permission/{id}", Name = "getPermission")]
+        [HttpGet("permissions/{id}", Name = "getPermission")]
         public async Task<ActionResult> GetPermission([FromRoute] int id)
         {
             var request = new GetPermissionQuery(id);
             var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+
+        [HttpPut("permissions/{id}", Name = "UpdatePermission")]
+        public async Task<ActionResult> Get([FromRoute] int id, [FromBody] UpdatePermissionRequest updatePermissionRequest)
+        {
+            var command = new UpdatePermissionCommand(
+                                id,
+                                updatePermissionRequest.EmployeeName,
+                                updatePermissionRequest.EmployeeLastName,
+                                updatePermissionRequest.PermissionTypeId
+                            );
+
+            var response = await _mediator.Send(command);
             return Ok(response);
         }
     }

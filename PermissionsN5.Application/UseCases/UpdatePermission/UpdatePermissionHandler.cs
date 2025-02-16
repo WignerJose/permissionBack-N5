@@ -19,11 +19,11 @@ namespace PermissionsN5.Application.UseCases.UpdatePermission
         }
         public async Task<UpdatePermissionResponse> Handle(UpdatePermissionCommand request, CancellationToken cancellationToken)
         {
-            var permission = await _unitOfWork.PermissionRepository.GetByIdAsync(request.Request.Id);
+            var permission = await _unitOfWork.PermissionRepository.GetByIdAsync(request.Id);
             if(permission is null)
                 throw new ArgumentNullException(nameof(permission), "No se encontró el permiso con el ID especificado.");
 
-            var permissionToUpdate = MapToPermission(permission,request.Request);
+            var permissionToUpdate = MapToPermission(permission,request);
             await _unitOfWork.PermissionRepository.UpdateAsync(permissionToUpdate);
             return MapToUpdatePermissionResponse(permissionToUpdate);
         }
@@ -40,7 +40,7 @@ namespace PermissionsN5.Application.UseCases.UpdatePermission
             };
         }
 
-        private Permission MapToPermission(Permission permission, UpdatePermissionRequest request)
+        private Permission MapToPermission(Permission permission, UpdatePermissionCommand request)
         {
             permission.PermissionTypeId = request.PermissionTypeId;
             permission.EmployeeLastName = request.EmployeeLastName;

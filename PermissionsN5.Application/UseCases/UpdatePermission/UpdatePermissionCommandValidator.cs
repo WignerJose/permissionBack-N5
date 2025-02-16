@@ -11,10 +11,10 @@ namespace PermissionsN5.Application.UseCases.UpdatePermission
     {
         public UpdatePermissionCommandValidator()
         {
-            RuleFor(permission => permission.Request.Id).NotEmpty().NotNull();
-            RuleFor(permission => permission.Request.EmployeeName).NotEmpty();
-            RuleFor(permission => permission.Request.EmployeeLastName).NotEmpty();
-            RuleFor(permission => permission.Request.PermissionTypeId).NotEmpty().NotNull();
+            RuleFor(permission => permission.Id).NotEmpty().NotNull();
+            RuleFor(permission => permission.EmployeeName).NotEmpty();
+            RuleFor(permission => permission.EmployeeLastName).NotEmpty();
+            RuleFor(permission => permission.PermissionTypeId).NotEmpty().NotNull();
         }
     }
 }
