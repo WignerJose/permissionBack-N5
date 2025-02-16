@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PermissionsN5.Domain.Entity
+namespace PermissionsN5.Domain.Entities
 {
     public class PermissionType
     {

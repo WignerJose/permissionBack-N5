@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using PermissionsN5.Domain.Entity;
+using PermissionsN5.Domain.Entities;
 using PermissionsN5.Domain.Interfaces;
 using System;
 using System.Collections.Generic;

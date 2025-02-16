@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
-using PermissionsN5.Domain.Entity;
+using PermissionsN5.Domain.Entities;
 using PermissionsN5.Infrastructure.Config;
 using System;
 using System.Collections.Generic;

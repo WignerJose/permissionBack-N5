@@ -1,4 +1,4 @@
-﻿using PermissionsN5.Domain.Entity;
+﻿using PermissionsN5.Domain.Entities;
 using PermissionsN5.Domain.Interfaces;
 using PermissionsN5.Infrastructure.Persistence;
 using System;
