@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using PermissionsN5.Application.UseCases.CreatePermission;
 using PermissionsN5.Application.UseCases.GetAllPermissions;
 using PermissionsN5.Application.UseCases.GetPermissionById;
 using PermissionsN5.Application.UseCases.UpdatePermission;
@@ -33,8 +34,15 @@ namespace PermissionsN5.WebApi.Controllers
             return Ok(response);
         }
 
+        [HttpPost("permissions", Name = "CreatePermission")]
+        public async Task<ActionResult> CreatePermission([FromBody] CreatePermissionCommand createPermissionCommand)
+        {
+            var response = await _mediator.Send(createPermissionCommand);
+            return Ok(response);
+        }
+
         [HttpPut("permissions/{id}", Name = "UpdatePermission")]
-        public async Task<ActionResult> Get([FromRoute] int id, [FromBody] UpdatePermissionRequest updatePermissionRequest)
+        public async Task<ActionResult> UpdatePermission([FromRoute] int id, [FromBody] UpdatePermissionRequest updatePermissionRequest)
         {
             var command = new UpdatePermissionCommand(
                                 id,
