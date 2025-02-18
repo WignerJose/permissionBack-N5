@@ -22,7 +22,7 @@ namespace PermissionsN5.Application.UseCases.GetAllPermissions
             return permissions.Select((p) => new GetAllPermissionResponse
             {
                 Id = p.Id,
-                EmployeeLastName = p.EmployeeName,
+                EmployeeLastName = p.EmployeeLastName,
                 EmployeeName = p.EmployeeName,
                 PermissionDate = p.PermissionDate,
                 PermissionTypeId = p.PermissionTypeId,
